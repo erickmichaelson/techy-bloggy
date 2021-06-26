@@ -2,9 +2,11 @@
   "name": "tech-blog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon sever.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
     "mysql2": "^2.0.1",
+    "nodemon": "^2.0.7",
     "sequelize": "^5.21.2"
   }
 }

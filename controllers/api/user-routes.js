@@ -1,21 +1,21 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// this is the signup route
 router.post('/', async (req, res) => {
+  console.log("Req",req.body)
   try {
-    const newUser = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-    });
-
-    req.session.save(() => {
-      req.session.userId = newUser.id;
-      req.session.username = newUser.username;
-      req.session.loggedIn = true;
+    const newUser = await User.create(req.body);
+    console.log(newUser)
+    // req.session.save(() => {
+    //   req.session.userId = newUser.id;
+    //   req.session.username = newUser.username;
+    //   req.session.loggedIn = true;
 
       res.json(newUser);
-    });
+  //  });
   } catch (err) {
+    console.log("Error in post",err)
     res.status(500).json(err);
   }
 });
