@@ -1,4 +1,4 @@
-const newFormHandler = async function(event) {
+const newFormHandler = async function (event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="post-title"]').value;
@@ -7,14 +7,22 @@ const newFormHandler = async function(event) {
   await fetch(`/api/post`, {
     method: 'POST',
     body: JSON.stringify({
-      title,
-      body,
+      description:body,
+      post_title:title,
+      user_id:""
+    
     }),
     headers: { 'Content-Type': 'application/json' },
-  });
+  }).then(function (records) {
+    console.log("In post", records);
+    document.location.replace('/dashboard');
+  })
+    .catch(function (err) {
+      consle.log("ERR in post route",err)
+    })
 
-  document.location.replace('/dashboard');
 };
+
 
 document
   .querySelector('#new-post-form')

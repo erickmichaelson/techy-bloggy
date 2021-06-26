@@ -14,6 +14,8 @@ const loginFormHandler = async function(event) {
   });
 
   if (response.ok) {
+    console.log(response)
+    localStorage.setItem("User",response.data)
     document.location.replace('/dashboard');
   } else {
     alert('Failed to login');

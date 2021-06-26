@@ -7,13 +7,13 @@ router.post('/', async (req, res) => {
   try {
     const newUser = await User.create(req.body);
     console.log(newUser)
-    // req.session.save(() => {
-    //   req.session.userId = newUser.id;
-    //   req.session.username = newUser.username;
-    //   req.session.loggedIn = true;
+    req.session.save(() => {
+      req.session.userId = newUser.id;
+      req.session.username = newUser.username;
+      req.session.loggedIn = true;
 
       res.json(newUser);
-  //  });
+    });
   } catch (err) {
     console.log("Error in post",err)
     res.status(500).json(err);
